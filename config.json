@@ -1,0 +1,10 @@
+
+{
+    "config_token":
+    {
+        "expirationTime":"60m",
+        "tokenSecret" : "very private"
+    
+    }
+
+}
