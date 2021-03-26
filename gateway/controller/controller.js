@@ -1,6 +1,8 @@
 const homeService= require('../services/home');
 const profileService= require('../services/profile');
 const authService = require('../services/auth');
+const weather = require('../services/weather');
+
 
  controller={
     getHome: (req,res)=>{
@@ -13,6 +15,10 @@ const authService = require('../services/auth');
     },
     authenticate:(req,res,repo) =>{
         authService.signIn(req,res,repo);
+    },
+    getWeather:(req,res)=>{
+        weather.getWeather(req,res);
+
     }
 }
 
