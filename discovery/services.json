@@ -1,0 +1,12 @@
+{
+    "samer": {
+        "name": "samer",
+        "url": "samer url",
+        "port": 42132
+    },
+    "samer2": {
+        "name": "samer2",
+        "url": "samer url2",
+        "port": 421322
+    }
+}
