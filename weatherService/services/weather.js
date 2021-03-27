@@ -5,8 +5,13 @@ url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&q='
 var weath = {
 
     getWeather:  (req, res)=> {
+        let city = req.query.city;
+        let country= req.query.country;
+        if(city == undefined || country == undefined){
+            res.status(404).json({error:"mssing args"});
 
-        request({uri:url + req.query.city + ',' + req.query.country + key,resolveWithFullResponse: true}).then((resp)=> {
+        }else{
+            request({uri:url + city + ',' +country + key,resolveWithFullResponse: true}).then((resp)=> {
                 if(resp.statusCode==200){
                     response = JSON.parse(resp.body),
                     res.status(200).
@@ -25,6 +30,9 @@ var weath = {
             json({error:`could not fetch weather for city=${req.query.city} and country=${req.query.country}` });
         }
         );
+            
+        }
+        
     }
 
 }

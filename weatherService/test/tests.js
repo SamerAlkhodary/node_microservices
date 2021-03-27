@@ -1,13 +1,10 @@
 const request = require('supertest');
 var express = require('express');
 const service = require('../service');
-const repository = require('../repository/serviceRepoditory');
 describe('loading express', function () {
     let server;
     beforeEach(function () {
-
-        let repo = new repository("./test/services.json");
-        server = service.makeServer(repo, 5000);
+        server = service.makeServer(5000);
 
         request(server.getApp());
 
@@ -17,48 +14,25 @@ describe('loading express', function () {
         done();
 
     });
-    it('getServiceExist', function testGetServiceExist(done) {
+    it('get weather correct args', function testGetWeatherShouldWork(done) {
         request(server.getApp())
-            .get('/get?name=auth')
-            .expect(200, {
-                    "name": "auth",
-                    "url": "localhost",
-                    "port": 4444
-                }, done);
+            .get('/get?city=Lund&country=SE')
+            .expect(200, done);
 
     });
-    it('getServiceNoExist', function testGetServiceNoExist(done) {
+    it('get weather wrong args', function testGetWeatherShouldNotWork(done) {
         request(server.getApp())
-            .get('/get?name=hello')
+            .get('/get?city=Lund&country=HU')
             .expect(404, done);
 
     });
-    it('add service should work',function testAddServiceShouldWork(done){
-        let newService={
-            name: "newService",
-            url:"url",
-            port : 5000,
-
-        }
+    it('get weather with no args',function testAddServiceShouldWork(done){
+    
         request(server.getApp())
-        .post('/add',done)
-        .send(newService)
-        .expect(200,{
-            status:"worked"
-        },done)
-    });
-    it('add service should not work',function testAddServiceShouldNotWork(done){
-        let newService={
-            name: "newService",
-            port : 5000,
+            .get('/get')
+            .expect(404, done);
 
-        }
-        request(server.getApp())
-        .post('/add',done)
-        .send(newService)
-        .expect(406,{
-            status:"error"
-        },done)
     });
+    
 
 });

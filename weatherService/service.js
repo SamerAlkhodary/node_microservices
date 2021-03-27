@@ -32,14 +32,13 @@ async registerService(){
         json:true
       
     }
-    const response = await request(options);
-
-    Promise.resolve(response).then((resp)=>{
+    request(options).then((resp)=>{
         console.log(`regestering service:${resp.status}`);
     }).catch((err)=>{
         console.log(`regestering service error:faild`);
     });
 
+    
 
 }
 
