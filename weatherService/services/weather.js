@@ -6,17 +6,23 @@ var weath = {
 
     getWeather:  (req, res)=> {
 
-        request(url + req.query.city + ',' + req.query.country + key).then(function (body) {
-            
-                response = JSON.parse(body),
-                
+        request({uri:url + req.query.city + ',' + req.query.country + key,resolveWithFullResponse: true}).then((resp)=> {
+                if(resp.statusCode==200){
+                    response = JSON.parse(resp.body),
+                    res.status(200).
+                    json(response)
 
-                res.send(response)
+                }else{
+                    res.status(resp.statusCode).
+                    json({error:`could not fetch weather for city=${req.query.city} and country=${req.query.country}` });
+
+                }
+                
         }
 
         ).catch( (error)=> {
-
-            res.send(error)
+            res.status(404).
+            json({error:`could not fetch weather for city=${req.query.city} and country=${req.query.country}` });
         }
         );
     }

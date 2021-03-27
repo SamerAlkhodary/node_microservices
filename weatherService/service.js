@@ -17,7 +17,7 @@ static makeServer(port){
 async registerService(){
     console.log(config.descovery_info);
     let uri = "http://"+config.descovery_info.url+":"+config.descovery_info.port+"/add";
-    console.log(uri);
+   
     let options={
         uri:uri,
         method:"POST",
@@ -28,7 +28,7 @@ async registerService(){
             "name":"weather",
             "url": "localhost",
             "port": this.port
-        },
+        }, 
         json:true
       
     }
@@ -37,7 +37,7 @@ async registerService(){
     Promise.resolve(response).then((resp)=>{
         console.log(`regestering service:${resp.status}`);
     }).catch((err)=>{
-        console.log(`regestering service error:${err}`);
+        console.log(`regestering service error:faild`);
     });
 
 

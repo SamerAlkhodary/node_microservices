@@ -15,7 +15,6 @@ const fs = require('fs');
      get(name){
         
         let services = JSON.parse(fs.readFileSync(this.file,'utf8'));
-        console.log(services);
         return services[name];
 
     }

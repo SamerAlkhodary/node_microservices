@@ -7,16 +7,9 @@ function route(app,repo){
     app.use('/private/',auth.authenticate);
 
 
-    app.get('/private/home',(req,res)=>{
-        controller.getHome(req,res) 
 
-    });
-    app.get('/private/profile',(req,res)=>{
-        controller.getProfile(req,res);
-
-    });
-    app.get('/private/weather',(req,res)=>{
-        controller.getWeather(req,res);
+    app.get('/private/get',(req,res)=>{
+        controller.forward(req,res);
 
     });
     app.post('/login',(req,res)=>{

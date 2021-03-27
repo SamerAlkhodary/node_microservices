@@ -5,6 +5,11 @@
         "expirationTime":"60m",
         "tokenSecret" : "very private"
     
+    },
+    "discoveryService":
+    {
+        "url": "localhost",
+        "port": "5000"
     }
 
 }

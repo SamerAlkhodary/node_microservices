@@ -1,25 +1,17 @@
-const homeService= require('../services/home');
-const profileService= require('../services/profile');
+
 const authService = require('../services/auth');
-const weather = require('../services/weather');
+const gateway = require('../services/gateway');
 
 
  controller={
-    getHome: (req,res)=>{
-        homeService.get(req,res);
-
-    },
-    getProfile:(req,res)=>{
-        profileService.get(req,res);
-        
-    },
+   
     authenticate:(req,res,repo) =>{
         authService.signIn(req,res,repo);
     },
-    getWeather:(req,res)=>{
-        weather.getWeather(req,res);
-
+    forward:(req,res)=>{
+        gateway.forward(req,res);
     }
+    
 }
 
 module.exports= controller;
