@@ -28,6 +28,7 @@ const discovery = {
         let name = req.body.name;
         let url = req.body.url;
         let port = req.body.port;
+        
 
         if (name != undefined && url != undefined && port != undefined) {
 
@@ -38,7 +39,7 @@ const discovery = {
             };
             repo.save(service);
 
-            res.status(200).send({ status: "worked" });
+            res.status(200).json({ status: "worked" });
         }
         else {
             res.status(406).send({ status: "error" });
