@@ -1,5 +1,5 @@
 var request = require('request-promise');
-const key = "&appid=fa6011d2088c9375d72725c51f2fd9af"
+const key = "&appid="
 url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&q='
 var weath = {
 
