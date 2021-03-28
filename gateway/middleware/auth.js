@@ -4,7 +4,8 @@ config = require('../config.json');
 auth={
     authenticate:(req,res,next)=>{
         if (!req.headers.authorization){
-            return res.status(403).json({error: 'No credentials found'});
+            //return res.status(403).json({error: 'No credentials found'});
+            next();
         }else{
             let token = req.headers.authorization;
            

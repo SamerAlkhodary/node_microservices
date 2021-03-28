@@ -3,7 +3,6 @@ var process = require('process');
 const key = "&appid="+process.env.WEATHERKEY
 url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&q='
 var weath = {
-
     getWeather:  (req, res)=> {
         let city = req.query.city;
         let country= req.query.country;
@@ -21,8 +20,7 @@ var weath = {
                     res.status(resp.statusCode).
                     json({error:`could not fetch weather for city=${req.query.city} and country=${req.query.country}` });
 
-                }
-                
+                }    
         }
 
         ).catch( (error)=> {

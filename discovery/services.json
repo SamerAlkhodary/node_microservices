@@ -3,5 +3,10 @@
         "name": "weather",
         "url": "localhost",
         "port": 5002
+    },
+    "auth": {
+        "name": "auth",
+        "url": "localhost",
+        "port": 4000
     }
 }

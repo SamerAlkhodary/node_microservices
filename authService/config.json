@@ -1,0 +1,13 @@
+{
+    "config_token":{
+        "expirationTime":"60m",
+        "tokenSecret" : "very private"
+    
+    },
+    
+        "descovery_info": {
+            "url": "localhost",
+            "port": "5000"
+        }
+    
+}

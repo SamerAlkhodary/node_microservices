@@ -1,15 +1,14 @@
 
-const authService = require('../services/auth');
 const gateway = require('../services/gateway');
 
 
  controller={
    
-    authenticate:(req,res,repo) =>{
-        authService.signIn(req,res,repo);
+    auth:(req,res) =>{
+        gateway.forward(req,res,true);
     },
     forward:(req,res)=>{
-        gateway.forward(req,res);
+        gateway.forward(req,res,false);
     }
     
 }
