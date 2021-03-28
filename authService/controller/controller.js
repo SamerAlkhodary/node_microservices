@@ -7,8 +7,9 @@ const auth= require('../services/auth');
         auth.signup(req,res,repo);
 
     },
-    authenticate: (req,res,repo)=>{
-        auth.authenticate(req,res,repo);
+    authenticate: (req,res)=>{
+        
+        auth.authenticate(req,res);
 
     },
     login: (req,res,repo)=>{

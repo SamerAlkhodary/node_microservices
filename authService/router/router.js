@@ -10,7 +10,8 @@ function route(app,repo){
         controller.login(req,res,repo) ;
 
     });
-    app.put('/authenticate',(req,res)=>{
+  
+    app.get('/authenticate',(req,res)=>{
         controller.authenticate(req,res) ;
 
     });

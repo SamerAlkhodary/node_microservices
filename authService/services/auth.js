@@ -26,21 +26,17 @@ authService={
             let salt = user.salt;
             let hash = sha512(password,salt);
             if( hash == user.hash){
-            
-
                 res.status(200).json({
                     toke: jwt.sign(
                         {
                         username:username,
                         role: user.role,
-                        
                     },
                     config.config_token.tokenSecret,
                     {
                         expiresIn:config.config_token.expirationTime
                     },
                     ),
-                    
                 });
     
             }else{
@@ -92,27 +88,25 @@ authService={
     },
 
 
-    authenticate:(req,res,next)=>{
-        if(next == undefined){
-            res.status(404).json({error:"invalid"});
-
-        }else{
+    authenticate:(req,res)=>{
+   
             if (!req.headers.authorization){
-                return res.status(403).json({error: 'No credentials found'});
+                 res.status(403).json({error: 'No credentials found'});
             }else{
                 let token = req.headers.authorization;
                
                 jwt.verify(token, config.config_token.tokenSecret,(err =>{
+                    console.log("here");
                     if(err){
-                    return res.status(403).json({error: 'invalid token'});
+                     return res.status(403).json({error: 'invalid token'});
     
                     }
-                    next()
+                    return res.status(200).json({status:"done"});
     
                 }));    
                 
             }
-        }
+        
         
 
 
