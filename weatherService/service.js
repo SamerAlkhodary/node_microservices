@@ -15,7 +15,9 @@ static makeServer(port){
     return new Server(port);
 }
 async registerService(){
+
     console.log(config.descovery_info);
+    console.log(`registering service:${config.serviceInfo.name}, ${config.serviceInfo.url}`);
     let uri = "http://"+config.descovery_info.url+":"+config.descovery_info.port+"/add";
    
     let options={
@@ -25,8 +27,8 @@ async registerService(){
             'Content-Type': 'application/json'
           },
         body:{
-            "name":"weather",
-            "url": "localhost",
+            "name":config.serviceInfo.name,
+            "url": config.serviceInfo.url,
             "port": this.port
         }, 
         json:true

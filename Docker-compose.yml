@@ -1,0 +1,42 @@
+version: '3.9'
+
+services: 
+
+  discovery_service:
+    build: ./discovery
+    volumes: 
+     - ./discovery:/usr/src/app
+    ports:
+     - "5001:5001"
+
+  auth_service:
+    build: ./authService
+    volumes: 
+     - ./authService:/usr/src/app
+    ports:
+     - "4000:4000"
+    depends_on: 
+      - discovery_service
+
+  weather_service:
+    build: ./weatherService
+    volumes: 
+     - ./weatherService:/usr/src/app
+    ports:
+     - "5002:5002"
+    depends_on:
+      - discovery_service 
+    
+  
+  gateway:
+    build: ./gateway
+    volumes: 
+     - ./gateway:/usr/src/app
+    ports:
+     - "4444:4444"
+    depends_on: 
+      - discovery_service
+      - auth_service
+      - weather_service
+  
+

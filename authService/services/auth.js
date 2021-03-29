@@ -53,6 +53,7 @@ authService={
         let username= req.body.username;
         let password= req.body.password;
         let role = req.body.role;
+        console.log(req.body);
         if(username!=undefined
         && password !=undefined
         && role != undefined

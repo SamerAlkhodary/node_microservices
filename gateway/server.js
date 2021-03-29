@@ -15,7 +15,7 @@ app.use(bp.urlencoded({ extended: true }))
 router(app);
 
 app.listen(
-    port,'localhost',()=>{
+    port,'0.0.0.0',()=>{
         console.log(`server is running on port ${port}`);
     }
 );

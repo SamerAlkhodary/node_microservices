@@ -6,8 +6,14 @@
     },
     
         "descovery_info": {
-            "url": "localhost",
-            "port": "5000"
+            "url": "discovery_service",
+            "port": "5001"
+        },
+        "serviceInfo":
+        {
+            "url": "auth_service",
+            "name": "auth"
+           
         }
     
 }

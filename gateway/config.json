@@ -8,8 +8,13 @@
     },
     "discoveryService":
     {
-        "url": "localhost",
-        "port": "5000"
+        "url": "discovery_service",
+        "port": "5001"
+    },
+    "serviceInfo":
+    {
+        "url": "gatewayService"
+       
     }
 
 }
